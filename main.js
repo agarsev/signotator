@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import './style.css';
 import { Q } from './q.js';
 import { O } from './space.js';
 import { L, isInH2 } from './body.js';
