@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "description": "Visual input component for Sign language coded with signotation.",
   "module": "dist/bundle.js",
+  "style": "style.css",
   "source": "index.js",
+  "type": "module",
   "scripts": {
     "build": "esbuild --bundle index.js --jsx=preserve --loader:.js=jsx --packages=external --outfile=dist/bundle.js --format=esm"
   },
   "keywords": [
     "sign language",
-    "react",
     "signotation",
-    "signario"
+    "signario",
+    "reactjs",
+    "tailwindcss"
   ],
   "author": "Antonio F. G. Sevilla <afgs@ucm.es>",
   "license": "OSL-3.0",
