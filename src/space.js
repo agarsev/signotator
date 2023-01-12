@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-import { isInH2 } from "./body.js";
+export function isInH2 (before, after) {
+    const open = before.lastIndexOf("[");
+    if (open < 0) return false;
+    if (open < before.lastIndexOf("]")) return false;
+    return true;
+}
 
 const opposite = {
     F: "B", B: "F",
@@ -86,4 +91,3 @@ export function O ({ done, options }) {
         </tbody>
     </table></div>;
 }
-

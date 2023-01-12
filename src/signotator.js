@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { Q } from './q.js';
-import { O } from './space.js';
-import { L, isInH2 } from './body.js';
+import { O, isInH2 } from './space.js';
+import { L } from './body.js';
 import { Dynam, Syllab } from './dynam.js';
 
 const tabs = { Q, O, L,
@@ -12,7 +12,7 @@ const tabs = { Q, O, L,
 
 const endSegment = /:|.(?= )/;
 
-export default function Signotator ({ inputRef, updateVal }) {
+export function Signotator ({ inputRef, updateVal }) {
     const [options, setOptions] = useLocalStorage("signotator-opts", DEF_OPTIONS);
     const [tab, setTab] = useState("Q");
     const Component = tabs[tab];

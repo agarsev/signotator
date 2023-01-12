@@ -1,13 +1,6 @@
 import { useState } from "react";
 
-import { Direction, rotate } from "./space.js";
-
-export function isInH2 (before, after) {
-    const open = before.lastIndexOf("[");
-    if (open < 0) return false;
-    if (open < before.lastIndexOf("]")) return false;
-    return true;
-}
+import { Direction, rotate, isInH2 } from "./space.js";
 
 export function L ({ done, options }) {
     const [name, setName] = useState(null);
