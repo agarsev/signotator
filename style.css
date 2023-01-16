@@ -1,23 +1,23 @@
 .Signotator {
-    @apply inline-block w-full border border-primary-600 p-1 rounded;
+    @apply inline-block w-full border border-signotatormain-600 p-1 rounded;
     max-width: 360px;
     & > * { @apply w-full; }
     & > nav {
         @apply flex space-x-1;
         & button {
-            @apply p-1 flex-1 bg-gray-200;
-            @apply border-x border-t border-primary-600/50 rounded-t;
-            &:disabled { @apply border-primary-600 bg-primary-200; }
-            &:hover { @apply border-primary-600 bg-primary-200; }
+            @apply p-1 flex-1 bg-signotatorbg;
+            @apply border-x border-t border-signotatormain-600/50 rounded-t;
+            &:disabled { @apply border-signotatormain-600 bg-signotatormain-200; }
+            &:hover { @apply border-signotatormain-600 bg-signotatormain-200; }
         }
     }
 }
 
 .Signotator > div {
-    @apply border border-primary-600 bg-gray-200;
+    @apply border border-signotatormain-600 bg-signotatorbg;
     & table { @apply w-full text-center; }
     & td {
-        @apply p-1 border-0 border-secondary-600;
+        @apply p-1 border-0 border-signotatorbtns-600;
         &:first-child { @apply pl-2; }
         &:last-child { @apply pr-2; }
     }
@@ -25,9 +25,9 @@
     & tr:last-child td { @apply pb-2; }
     & button {
         @apply p-0 w-12 h-12 align-middle rounded border text-gray-600 border-gray-600;
-        &:not(:disabled) { @apply border-secondary-600 text-secondary-700 bg-secondary-200/50 hover:bg-secondary-300; }
-        &.actual { @apply bg-secondary-300; }
-        &.finish:not(:disabled) { @apply text-primary-700 border-primary-600 bg-primary-300/50 hover:bg-primary-300; }
+        &:not(:disabled) { @apply border-signotatorbtns-600 text-signotatorbtns-700 bg-signotatorbtns-200/50 hover:bg-signotatorbtns-300; }
+        &.actual { @apply bg-signotatorbtns-300; }
+        &.finish:not(:disabled) { @apply text-signotatormain-700 border-signotatormain-600 bg-signotatormain-300/50 hover:bg-signotatormain-300; }
         & svg { @apply p-0 stroke-current; }
     }
 }
@@ -37,20 +37,20 @@
     & .Arrow {
         vector-effect: non-scaling-stroke;
         stroke-width: 1.30;
-        @apply fill-secondary-200/50 stroke-secondary-600;
-        &.enabled:hover { @apply cursor-pointer fill-secondary-300/80; }
-        &.actual { @apply cursor-pointer stroke-secondary-600 fill-secondary-300; }
+        @apply fill-signotatorbtns-200/50 stroke-signotatorbtns-600;
+        &.enabled:hover { @apply cursor-pointer fill-signotatorbtns-300/80; }
+        &.actual { @apply cursor-pointer stroke-signotatorbtns-600 fill-signotatorbtns-300; }
         &.disabled { @apply stroke-gray-600 fill-transparent; }
     }
     & .Locus {
         @apply fill-transparent cursor-pointer;
-        &:hover { @apply fill-secondary-200; }
-        &.actual { @apply fill-secondary-300; }
+        &:hover { @apply fill-signotatorbtns-200; }
+        &.actual { @apply fill-signotatorbtns-300; }
     }
     & .BodyOutline {
         vector-effect: non-scaling-stroke;
         stroke-width: 1.50;
-        @apply stroke-secondary-700;
+        @apply stroke-signotatorbtns-700;
     }
 }
 

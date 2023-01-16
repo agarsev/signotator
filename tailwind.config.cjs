@@ -5,10 +5,11 @@ module.exports = {
   theme: {
       colors: {
         gray: colors.zinc,
-        primary: colors.lime,
-        secondary: colors.sky,
+        signotatormain: colors.lime,
+        signotatorbtns: colors.sky,
         current: 'currentColor',
         transparent: 'transparent',
+        signotatorbg: colors.sky[50],
         red: colors.red,
       }
   },
