@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Direction } from "./space.js";
+import { Direction, TouchButton } from "./space.js";
 
 function Choice ({ val, actual, set, borders="" }) {
     const cont = val in paths ?
@@ -89,8 +89,8 @@ export function Dynam ({ done, options }) {
                 <Direction val={isArc&&d0.length!=0?d1:null} set={setD1} options={options} />
             </div></td>
             <td className="!border-l">
-                <button className={`${touch?"actual":""} mb-3`}
-                    onClick={() => setTouch(!touch)}>✳️</button>
+                <TouchButton className={`${touch?"actual":""} mb-3`}
+                    onClick={() => setTouch(!touch)} />
                 <button className="finish"
                     disabled={isArc && d0.length==0}
                     onClick={finish}>✔</button>

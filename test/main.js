@@ -1,4 +1,4 @@
-import { Signotator } from '../dist/bundle.js';
+import { Signotator } from '..';
 import { createRoot } from "react-dom/client";
 
 const textbox = document.getElementById("textbox");

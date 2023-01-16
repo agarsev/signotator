@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Direction, rotate, isInH2 } from "./space.js";
+import { Direction, rotate, isInH2, TouchButton } from "./space.js";
 
 export function L ({ done, options }) {
     const [name, setName] = useState(null);
@@ -38,8 +38,8 @@ export function L ({ done, options }) {
         <div className="col-start-2 col-end-4 row-start-1">
             <Direction val={dir} set={setDir} options={options} />
         </div>
-        <button className={`col-start-3 row-start-2 mb-2 ${touch?"actual":""}`}
-            onClick={() => setTouch(!touch)}>✳️</button>
+        <TouchButton className={`col-start-3 row-start-2 mb-2 ${touch?"actual":""}`}
+            onClick={() => setTouch(!touch)} />
         <button className="finish col-start-3 row-start-3 mr-2 mb-2"
             onClick={finish}>✔</button>
     </div>;

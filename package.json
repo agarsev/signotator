@@ -6,10 +6,6 @@
   "style": "style.css",
   "source": "index.js",
   "type": "module",
-  "scripts": {
-    "build": "esbuild --bundle index.js --jsx=preserve --loader:.js=jsx --packages=external --outfile=dist/bundle.js --format=esm",
-    "test": "esbuild --bundle test/main.js --jsx=automatic --loader:.js=jsx --outfile=test/bundle/code.js && postcss test/style.css -o test/bundle/style.css"
-  },
   "keywords": [
     "sign language",
     "signotation",

@@ -360,6 +360,16 @@ function O2({ done, options }) {
     >{"\u2714"}</button></td></tr>
   </tbody></table></div>;
 }
+function TouchButton(props) {
+  return <button {...props}><svg style={{
+    width: "100%",
+    padding: 0,
+    fill: "none",
+    strokeWidth: 1.25,
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }} viewBox="0 0 32 32"><path d="M 9.8659954,3.922198 V 16.100796 M 4.4288279,13.219771 15.402557,6.884086 M 4.425939,6.820169 15.344755,13.12415 M -0.11107846,14.296876 C 7.8334169,17.313842 14.263315,23.552251 16.599534,32.350518 M 11.786148,20.028753 c 5.186495,-0.727003 4.833503,-3.321 4.833503,-3.321 m 14.145723,1.696031 -13.068554,4.993152 c -4.370387,1.66981 -6.16033,-1.484613 -6.311563,-4.812827 l 18.695134,-7.142921 c 0.678746,-0.447867 1.394678,-0.775796 2.108353,-0.976927" /></svg></button>;
+}
 
 // src/body.js
 import { useState as useState3 } from "react";
@@ -395,10 +405,10 @@ function L({ done, options }) {
       <BodyOutline />
     </svg>
     <div className="col-start-2 col-end-4 row-start-1"><Direction val={dir2} set={setDir} options={options} /></div>
-    <button
+    <TouchButton
       className={`col-start-3 row-start-2 mb-2 ${touch ? "actual" : ""}`}
       onClick={() => setTouch(!touch)}
-    >{"\u2733\uFE0F"}</button>
+    />
     <button
       className="finish col-start-3 row-start-3 mr-2 mb-2"
       onClick={finish}
@@ -552,10 +562,10 @@ function Dynam({ done, options }) {
         <Direction val={isArc && d0.length != 0 ? d1 : null} set={setD1} options={options} />
       </div></td>
       <td className="!border-l">
-        <button
+        <TouchButton
           className={`${touch ? "actual" : ""} mb-3`}
           onClick={() => setTouch(!touch)}
-        >{"\u2733\uFE0F"}</button>
+        />
         <button
           className="finish"
           disabled={isArc && d0.length == 0}
