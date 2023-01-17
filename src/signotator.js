@@ -10,6 +10,14 @@ const tabs = { Q, O, L,
     "⚙": Options,
 };
 
+const tooltips = {
+    Q: "Configuración de los dedos",
+    O: "Orientación de la mano",
+    L: "Lugar de articulación",
+    M: "Movimiento",
+    S: "Sílaba"
+};
+
 const endSegment = /:|.(?= )/;
 
 export function Signotator ({ inputRef, updateVal }) {
@@ -64,6 +72,7 @@ export function Signotator ({ inputRef, updateVal }) {
         e.preventDefault(); e.stopPropagation(); inputRef.current.focus();
         }} >
         <nav>{Object.keys(tabs).map(seg=> <button key={seg}
+                title={tooltips[seg]}
                 disabled={tab==seg} onClick={() => clickTab(seg)}>
             {seg}</button>)}</nav>
         <Component done={appendSN} options={options} setOptions={setOptions} />

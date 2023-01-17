@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Icon } from './common.js';
 
-const FingerDrawing = ({ name }) => <Icon path={fingers[name]} />;
+const FingerDrawing = ({ name }) => <Icon path={fingers[name]} title={tooltips[name]} />;
 
 export function Q ({ done }) {
 
@@ -169,3 +169,21 @@ const fingers = {
     indePext: "m 30.355505,18.339527 c -3.165783,0.807347 -2.256791,2.457661 -2.256791,2.457661 M 18.73659,21.46698 c 0.97097,-1.439438 2.952628,-2.693436 4.93644,-3.47408 2.603045,-1.024317 5.15995,-1.520838 6.028134,-0.792423 0.868184,0.728414 1.054825,2.393264 1.054825,2.393264 l -3.873803,1.793586 c -0.373351,0.363233 -0.546782,0.798742 -1.334163,1.012298 -0.863753,0.708221 -2.347129,1.406235 -2.369165,2.404752 M -1.0272036,13.426643 c 3.6441465,-0.436741 3.7572194,-2.219488 3.7572194,-2.219488 m -0.1775082,4.599186 c -3.21514316,1.092878 -4.0076372,-1.09122 -3.6563752,-3.374974 L 9.9006422,8.690759 C 12.069035,7.4560127 14.39146,7.6312154 14.903409,9.5144904 M 2.4412524,14.73957 c 3.6441465,-0.436741 3.7572193,-2.219488 3.7572193,-2.219488 m -0.9790639,4.815312 c -2.5455551,0.487308 -3.1748285,-1.51054 -2.8548192,-3.5911 L 13.369098,10.003686 c 2.425749,-1.3812925 5.044264,-0.9980947 5.105256,1.566963 M 5.3270164,16.971782 c 3.6441464,-0.43674 3.7572193,-2.219487 3.7572193,-2.219487 m 6.6877203,2.265584 -6.8652285,2.333602 C 5.6915848,20.444359 4.8990902,18.260261 5.2503525,15.976507 L 16.254862,12.235898 c 2.762358,-1.572967 5.774691,-0.857769 4.975558,2.761938",
     indePcur: "m 5.1984272,29.642058 c 4.1640154,-0.956079 4.6502884,1.123443 4.6502884,1.123443 M 16.544934,25.016702 H 8.7219602 c -3.816616,0 -4.2622031,3.262679 -3.408415,5.842972 H 16.641456 M 25.320618,1.2719461 c -0.956078,4.1640155 1.123443,4.6502885 1.123443,4.6502885 M 20.695262,20.967574 V 4.7954788 c 0,-3.81661576 3.26268,-4.26220282 5.842972,-3.4084148 v 16.326273 c 0.554914,1.017131 0.906627,2.061923 0,3.278017",
 };
+
+const tooltips = {
+    // Selecciones
+    P: "Pulgar", I: "Índice", C: "Corazón", A: "Anular", M: "Meñique",
+    L: "Pulgar e Índice", H: "Pulgar, Índice y Corazón", OO: "Todos",
+    V: "Índice y Corazón", W: "Índice, Corazón y Anular", B: "Todos menos Pulgar",
+    IM: "Índice y Meñique", PM: "Pulgar y Meñique", PC: "Pulgar y Corazón", CA: "Corazón y Anular",
+    // Flexiones
+    indePcur: "El pulgar opuesto", indePext: "El pulgar extendido",
+    "#": "Puño (todos los dedos)", E: "Dedos extendidos",
+    c: "Dedos curvos", r: "Dedos doblados por la base, rectos", g: "Dedos doblados por el nudillo, garra",
+    // Contacto
+    "-": "Dedos juntos lateralmente", "+": 'Las yemas en contacto (pinza)',
+    // Otros
+    O: "El resto de dedos extendidos", LL: 'Mano "llave"', 
+    D: 'Dactilológico "D"', T: 'Dactilológico "T"', R: 'Dactilológico "R"',
+    S: 'Dactilológico "S"', F: 'Dactilológico "F"',
+}

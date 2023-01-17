@@ -13,6 +13,7 @@ function Choice ({ val, actual, set, borders="" }) {
     </svg>: val;
     return <td className={borders.split('').map(b => '!border-'+b).join(' ')}>
         <button className={actual?.includes(val)?"actual":""}
+            title={tooltips[val]}
             onClick={() => set(actual==val?null:val)}>
             {cont}</button>
     </td>;
@@ -150,4 +151,33 @@ const paths = {
     "^": "M 11.962693,14.011118 C 10.160967,12.026657 8.445091,10.096038 10.660001,8.0850822 m -1.172512,5.9906658 2.475204,-0.06463 0.30446,-2.454051 m 1.700359,10.518369 c 2.45316,-4.627114 -0.0332,-6.580928 -0.0332,-6.580928 m 7.50726,12.45528 0.29273,-10.337049 -1.32678,-0.03954 -0.81337,1.74063 c -1.63116,3.490739 -5.23236,3.910918 -7.42316,2.06709 l 2.89739,-8.060809 c 0.61323,-2.011723 2.81753,-1.932408 2.81753,-1.932408 l 8.76422,0.173716 c 0,0 2.1462,0.111861 2.05151,2.366471 v 10.42306 c 0.68023,1.24683 1.11137,2.527573 0,4.018295",
     "7": "M 6.6798626,14.676983 C 8.0819516,9.1665312 11.689081,6.2755661 19.887527,7.6813315 M 5.1453249,12.733788 6.6798626,14.676983 8.827226,13.45065 M 3.4237545,19.566145 C 8.302122,21.471345 9.264253,19.036652 9.264253,19.036652 M 20.768545,27.440778 6.9287239,25.396744 C 2.3004103,24.713178 2.2839323,21.086332 3.781437,18.110201 l 19.798464,2.924079 c 4.267053,-0.306365 7.806427,2.785524 5.121741,7.334964",
     "_": "M 12.651358,16.911352 23.260695,30.654107 M 14.915745,10.821859 19.378,6.4076217 M 3.8253711,14.307286 -3.0254381,11.433665 M 5.0579849,10.609869 -3.4940002,4.7105596 M 7.4523466,7.6793882 0.67247726,-1.8429353 M 11.702879,5.9552602 7.536116,-4.0977318 M 3.8253711,14.307286 5.0579849,10.609869 7.4523466,7.6793882 11.702879,5.9552602 14.915716,10.821879 c 1.182704,1.744988 1.484416,3.058797 1.073099,3.842387 L 9.090164,19.322851 C 7.2178175,19.434842 3.8253711,14.307286 3.8253711,14.307286 Z m 15.9536439,5.868142 c 1.976272,-3.254581 5.482737,-4.825203 10.357727,-4.123334 m -10.889452,1.705057 0.531725,2.418282 2.467335,-0.165297",
+}
+
+const tooltips = {
+    "<": "Los dedos se extienden",
+    ">": "Los dedos se cierran",
+    ">w": "Los dedos se cierran escalonadamente (castañuela)",
+    "<w": "Los dedos se abren escalonadamente (castañuela)",
+    "w": "Los dedos se menean",
+    "$": "La mano rota sobre eje que marca el antebrazo",
+    "/": "La mano se inclina lateralmente (como en HOLA)",
+    "%": "La mano se abate sobre el antebrazo",
+    "8": "La mano rota sobre la muñeca haciendo círculos",
+    "->": "Desplazamiento recto",
+    "2": 'Desplazamiento como una Z o un 2 (como en FELIZ)',
+    "3": "Tirabuzón o hélice",
+    // arc
+    "())": "Desplazamiento en arco (elegir hacia dónde empieza)",
+    // circle (included in arc)
+    "()": "Desplazamiento en círculo (elegir hacia dónde empieza y luego dónde sigue)",
+    "+": "Los dedos se cierran, tocando las yemas (pinza)",
+    "^": "Los dedos se doblen en garra",
+    "7": "Los dedos se doblan por la base, pero siguen rectos",
+    "_": "El giro no es sólo de la mano, sino todo el brazo desde el codo",
+    "=": "Las dos manos, en fase",
+    "~": "Las dos manos, en antifase",
+    "&": "Las dos manos se mueven juntas, como una unidad",
+    "R": "Se repite el movimiento",
+    "N": "Se deshace y rehace el movimiento",
+    "!": "Se mantiene la mano en tensión",
 }
