@@ -31,7 +31,7 @@
         & svg { @apply p-0 stroke-current; }
     }
     & .VectorIcon {
-        @apply stroke-signotatormain-600;
+        @apply stroke-signotatormain-600/80;
         vector-effect: non-scaling-stroke;
     }
 }

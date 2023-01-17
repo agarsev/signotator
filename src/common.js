@@ -1,6 +1,6 @@
-export function Icon ({ path }) {
+export function Icon ({ path, stroke=1.25 }) {
     return <svg style={{ width: "100%", padding: 0,
-            fill: "none", strokeWidth: 1.25,
+            fill: "none", strokeWidth: stroke,
             strokeLinecap: "round", strokeLinejoin: "round"
         }} viewBox="0 0 32 32">
         <path d={path} />
