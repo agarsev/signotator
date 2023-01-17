@@ -30,6 +30,10 @@
         &.finish:not(:disabled) { @apply text-signotatormain-700 border-signotatormain-600 bg-signotatormain-300/50 hover:bg-signotatormain-300; }
         & svg { @apply p-0 stroke-current; }
     }
+    & .VectorIcon {
+        @apply stroke-signotatormain-600;
+        vector-effect: non-scaling-stroke;
+    }
 }
 
 .Signotator svg {

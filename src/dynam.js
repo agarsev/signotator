@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { Direction, TouchButton } from "./space.js";
+import { Direction } from "./space.js";
+import { TouchButton } from "./common.js";
 
 function Choice ({ val, actual, set, borders="" }) {
     const cont = val in paths ?

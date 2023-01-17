@@ -1,13 +1,8 @@
 import { useState } from "react";
 
-function FingerDrawing ({ name }) {
-    return <svg style={{ width: "100%", padding: 0,
-            fill: "none", strokeWidth: 1.25,
-            strokeLinecap: "round", strokeLinejoin: "round"
-        }} viewBox="0 0 32 32">
-        <path d={fingers[name]} />
-    </svg>;
-}
+import { Icon } from './common.js';
+
+const FingerDrawing = ({ name }) => <Icon path={fingers[name]} />;
 
 export function Q ({ done }) {
 

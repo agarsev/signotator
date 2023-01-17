@@ -6,7 +6,7 @@ dist/bundle.js: index.js $(wildcard src/*) | dist
 test/bundle/code.js: test/main.js dist/bundle.js | test/bundle
 	npx esbuild --bundle $< --jsx=automatic --loader:.js=jsx --outfile=$@
 
-test/bundle/style.css: test/style.css $(wildcard src/*) | test/bundle
+test/bundle/style.css: test/style.css style.css $(wildcard src/*) | test/bundle
 	npx postcss $< -o $@
 
 test/bundle dist:

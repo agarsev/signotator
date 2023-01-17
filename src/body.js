@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { Direction, rotate, isInH2, TouchButton } from "./space.js";
+import { Direction, rotate, isInH2 } from "./space.js";
+import { TouchButton } from "./common.js";
 
 export function L ({ done, options }) {
     const [name, setName] = useState(null);

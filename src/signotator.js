@@ -82,7 +82,7 @@ function Options ({ options, setOptions }) {
 
     return <div><table><tbody>
         <tr>
-            <th>Perspectiva:</th>
+            <th className="py-3">Perspectiva:</th>
             <td><Radio pref="perspective" text="Observador" val="obs" /></td>
             <td><Radio pref="perspective" text="Signante" val="sign" /></td>
         </tr>
