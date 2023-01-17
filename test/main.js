@@ -1,13 +1,15 @@
-import { Signotator } from '..';
 import { createRoot } from "react-dom/client";
+import { useRef, useState } from "react";
 
-const textbox = document.getElementById("textbox");
+import { Signotator, SignotationInput } from '..';
 
 function TestApp () {
-    return <Signotator 
-        inputRef={{current: textbox}}
-        updateVal={val => { textbox.value = val; }}
-    />;
+    const [signot, setSignot] = useState("");
+    const ipRef = useRef();
+    return <>
+        <SignotationInput inputRef={ipRef} value={signot} updateVal={setSignot} />
+        <Signotator inputRef={ipRef} updateVal={setSignot} />
+    </>;
 }
 
 createRoot(document.getElementById("signotator")).render(<TestApp />);

@@ -7,6 +7,7 @@ module.exports = {
         gray: colors.zinc,
         signotatormain: colors.lime,
         signotatorbtns: colors.sky,
+        white: 'white',
         current: 'currentColor',
         transparent: 'transparent',
         signotatorbg: colors.sky[50],
