@@ -1,13 +1,13 @@
 # Signotador / Signotator
 
-"Signotador" es un componente React para la introducción visual de Lengua de
+"Signotador" es un componente React para la transcripción visual de Lengua de
 Signos Española (LSE). La introducción es paramétrica, es decir, sigue
 principios fonológicos de la LSE. Sin embargo, se realiza pinchando sobre
 botones con ilustraciones de los distintos parámetros, de manera que es
 intuitivo, visual, e independiente de la lengua oral. El resultado se codifica
 en "Signotación", una codificación fonológica de la LSE.
 
-"Signotator" is a React component for the visual input of Spanish Sign Language
+"Signotator" is a React component for the visual transcription of Spanish Sign Language
 (SSL). The input process is parametric, that is, it follows phonological
 principles of SSL. However, it is performed by clicking on buttons with
 illustrations of the different parameters, so it is intuitive, visual, and

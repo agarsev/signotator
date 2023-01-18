@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: ["./src/*.js", "./test/*.{html,js}"],
+  content: ["./src/*.js", "./docs/*.{html,js}"],
   theme: {
       colors: {
         gray: colors.zinc,
