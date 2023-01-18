@@ -25064,7 +25064,7 @@
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "^", actual: evo, set: setEvo, borders: "b" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "7", actual: evo, set: setEvo, borders: "b" }),
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "+", actual: evo, set: setEvo, borders: "br" }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "_", actual: fore ? "actual" : "", set: () => setFore(!fore) })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "_", actual: fore ? "_" : "", set: () => setFore(!fore) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
         /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Choice, { val: "$", actual: gir, set: setGir, borders: "b" }),

@@ -605,7 +605,7 @@ function Dynam({ done, options }) {
       <Choice val="^" actual={evo} set={setEvo} borders="b" />
       <Choice val="7" actual={evo} set={setEvo} borders="b" />
       <Choice val="+" actual={evo} set={setEvo} borders="br" />
-      <Choice val="_" actual={fore ? "actual" : ""} set={() => setFore(!fore)} />
+      <Choice val="_" actual={fore ? "_" : ""} set={() => setFore(!fore)} />
     </tr>
     <tr>
       <Choice val="$" actual={gir} set={setGir} borders="b" />
