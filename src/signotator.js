@@ -21,7 +21,7 @@ const tooltips = {
 const endSegment = /:|.(?= )/;
 
 export function Signotator ({ inputRef, updateVal }) {
-    const [options, setOptions] = useLocalStorage("signotator-opts", DEF_OPTIONS);
+    const [options, setOptions] = useOptions();
     const [tab, setTab] = useState("Q");
     const Component = tabs[tab];
     const setCursor = pos => {
@@ -95,22 +95,30 @@ function Options ({ options, setOptions }) {
             <td><Radio pref="perspective" text="Observador" val="obs" /></td>
             <td><Radio pref="perspective" text="Signante" val="sign" /></td>
         </tr>
+        <tr>
+            <th className="py-3">Signante:</th>
+            <td><Radio pref="dominant" text="Diestro" val="right" /></td>
+            <td><Radio pref="dominant" text="Zurdo" val="left" /></td>
+        </tr>
     </tbody></table></div>;
 }
 
 const DEF_OPTIONS = {
-    perspective: "sign"
+    perspective: "sign",
+    dominant: "right"
 };
 
-function useLocalStorage(key, def) {
+const OPTS_KEY = "signotator-opts";
+
+function useOptions() {
     let stored;
     try {
-        stored = JSON.parse(localStorage.getItem(key));
+        stored = JSON.parse(localStorage.getItem(OPTS_KEY));
     } catch {}
-    if (stored===undefined || stored===null) stored = def;
+    stored = { ...DEF_OPTIONS, ...stored };
     const [ val, set ] = useState(stored);
     return [ val, new_val => {
-        localStorage.setItem(key, JSON.stringify(new_val));
+        localStorage.setItem(OPTS_KEY, JSON.stringify(new_val));
         set(new_val);
     }];
 }

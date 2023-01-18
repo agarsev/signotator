@@ -350,10 +350,13 @@ function mirror(dir2) {
 }
 var dirOrder = ["H", "L", "B", "F", "Y", "X"];
 function Direction({ val, set, options }) {
-  const invert = options.perspective == "obs";
   function Arrow({ invariant, dir: dir2, path }) {
     if (options.perspective == "obs") {
       dir2 = rotate(dir2);
+    }
+    const title = tooltip[dir2];
+    if (options.dominant == "left") {
+      dir2 = mirror(dir2);
     }
     const opo = opposite[dir2];
     let cn = "Arrow";
@@ -369,7 +372,7 @@ function Direction({ val, set, options }) {
       cn += " enabled";
       click = () => set(val.concat([dir2]).sort((a, b) => dirOrder.indexOf(a) - dirOrder.indexOf(b)));
     }
-    return <path d={path} className={cn} onClick={click}><title>{tooltip[dir2]}</title></path>;
+    return <path d={path} className={cn} onClick={click}><title>{title}</title></path>;
   }
   return <svg className="w-full h-full" viewBox="90 52 62 58">
     <Arrow dir="F" path="m 133.66599,62.189793 -16.63545,6.86199 8.18301,0.0785 -5.84265,8.538184 7.35789,0.07058 5.84265,-8.538184 8.18299,0.0785 z" />
@@ -425,7 +428,15 @@ function L({ done, options }) {
   const [name, setName] = useState3(null);
   const [dir2, setDir] = useState3([]);
   const [touch, setTouch] = useState3(false);
-  const fixDir = options.perspective == "obs" ? (d) => d : (d) => rotate(d);
+  let mirrored = false, fixDir = (d) => d;
+  if (options.perspective == "obs" && options.dominant == "left") {
+    mirrored = true;
+  } else if (options.perspective == "sign") {
+    fixDir = (d) => mirror(rotate(d));
+    if (options.dominant == "right") {
+      mirrored = true;
+    }
+  }
   const finish = () => {
     const mod = dir2.join("") + (touch ? "*" : "");
     if (name == "H2") {
@@ -434,32 +445,34 @@ function L({ done, options }) {
       done((name || "") + mod, "M");
     }
   };
-  return <div className="grid grid-cols-[2fr,1fr,auto] grid-rows-[1fr,auto]">
+  return <div className={`grid ${mirrored ? "grid-cols-[1fr,2fr,1fr,auto,auto]" : "grid-cols-[3fr,1fr,auto,auto]"} grid-rows-[3fr,1fr,auto]`}>
     <svg
-      className="w-full h-full col-start-1 col-end-3 row-start-1 row-end-4"
+      className={`w-full h-full ${mirrored ? "col-start-2 col-end-6" : "col-start-1 col-end-4"} row-start-1 row-end-3 -mt-2`}
       viewBox="0 0 83 87"
     >
       <defs><filter id="svgblur"><feGaussianBlur stdDeviation="0.6" /></filter></defs>
-      <g filter="url(#svgblur)">{area_paths.map(([thisName, thisDir, path, title]) => <AreaPath
-        key={thisName + thisDir}
-        title={title}
-        name={thisName}
-        dir={fixDir(thisDir)}
-        path={path}
-        curName={name}
-        curDir={dir2}
-        setName={setName}
-        setDir={setDir}
-      />)}</g>
-      <BodyOutline />
+      <g style={{ transformOrigin: "center" }} transform={`scale(${mirrored ? "-1" : "1"},1)`}>
+        <g filter="url(#svgblur)">{area_paths.map(([thisName, thisDir, path, title]) => <AreaPath
+          key={thisName + thisDir}
+          title={title}
+          name={thisName}
+          dir={fixDir(thisDir)}
+          path={path}
+          curName={name}
+          curDir={dir2}
+          setName={setName}
+          setDir={setDir}
+        />)}</g>
+        <BodyOutline />
+      </g>
     </svg>
-    <div className="col-start-2 col-end-4 row-start-1"><Direction val={dir2} set={setDir} options={options} /></div>
+    <div className={mirrored ? "col-start-1 col-end-3 row-start-1" : "col-start-2 col-end-5 row-start-1"}><Direction val={dir2} set={setDir} options={options} /></div>
     <TouchButton
-      className={`col-start-3 row-start-2 mb-2 ${touch ? "actual" : ""}`}
+      className={`${mirrored ? "col-start-4" : "col-start-3"} row-start-3 mx-2 mb-2 ${touch ? "actual" : ""}`}
       onClick={() => setTouch(!touch)}
     />
     <button
-      className="finish col-start-3 row-start-3 mr-2 mb-2"
+      className={`finish ${mirrored ? "col-start-5" : "col-start-4"} row-start-3 mx-2 mb-2`}
       onClick={finish}
     >{"\u2714"}</button>
   </div>;
@@ -725,7 +738,7 @@ var tooltips3 = {
 };
 var endSegment = /:|.(?= )/;
 function Signotator({ inputRef, updateVal }) {
-  const [options, setOptions] = useLocalStorage("signotator-opts", DEF_OPTIONS);
+  const [options, setOptions] = useOptions();
   const [tab, setTab] = useState5("Q");
   const Component = tabs[tab];
   const setCursor = (pos) => {
@@ -806,26 +819,34 @@ function Options({ options, setOptions }) {
       {text}
     </label>;
   }
-  return <div><table><tbody><tr>
-    <th className="py-3">Perspectiva:</th>
-    <td><Radio pref="perspective" text="Observador" val="obs" /></td>
-    <td><Radio pref="perspective" text="Signante" val="sign" /></td>
-  </tr></tbody></table></div>;
+  return <div><table><tbody>
+    <tr>
+      <th className="py-3">Perspectiva:</th>
+      <td><Radio pref="perspective" text="Observador" val="obs" /></td>
+      <td><Radio pref="perspective" text="Signante" val="sign" /></td>
+    </tr>
+    <tr>
+      <th className="py-3">Signante:</th>
+      <td><Radio pref="dominant" text="Diestro" val="right" /></td>
+      <td><Radio pref="dominant" text="Zurdo" val="left" /></td>
+    </tr>
+  </tbody></table></div>;
 }
 var DEF_OPTIONS = {
-  perspective: "sign"
+  perspective: "sign",
+  dominant: "right"
 };
-function useLocalStorage(key, def) {
+var OPTS_KEY = "signotator-opts";
+function useOptions() {
   let stored;
   try {
-    stored = JSON.parse(localStorage.getItem(key));
+    stored = JSON.parse(localStorage.getItem(OPTS_KEY));
   } catch {
   }
-  if (stored === void 0 || stored === null)
-    stored = def;
+  stored = { ...DEF_OPTIONS, ...stored };
   const [val, set] = useState5(stored);
   return [val, (new_val) => {
-    localStorage.setItem(key, JSON.stringify(new_val));
+    localStorage.setItem(OPTS_KEY, JSON.stringify(new_val));
     set(new_val);
   }];
 }

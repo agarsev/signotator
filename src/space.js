@@ -35,10 +35,13 @@ export function mirror (dir) {
 const dirOrder = ["H", "L", "B", "F", "Y", "X"];
 
 export function Direction ({ val, set, options }) {
-    const invert = options.perspective == "obs";
     function Arrow({ invariant, dir, path }) {
         if (options.perspective=="obs") {
             dir = rotate(dir);
+        }
+        const title = tooltip[dir];
+        if (options.dominant=="left") {
+            dir = mirror(dir);
         }
         const opo = opposite[dir];
         let cn = "Arrow";
@@ -54,7 +57,7 @@ export function Direction ({ val, set, options }) {
             cn += " enabled";
             click = () => set(val.concat([dir]).sort((a, b) => dirOrder.indexOf(a)-dirOrder.indexOf(b)));
         }
-        return <path d={path} className={cn} onClick={click}><title>{tooltip[dir]}</title></path>;
+        return <path d={path} className={cn} onClick={click}><title>{title}</title></path>;
     }
     return <svg className="w-full h-full" viewBox="90 52 62 58">
         <Arrow dir="F" path="m 133.66599,62.189793 -16.63545,6.86199 8.18301,0.0785 -5.84265,8.538184 7.35789,0.07058 5.84265,-8.538184 8.18299,0.0785 z" />

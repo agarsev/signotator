@@ -1,15 +1,21 @@
 import { useState } from "react";
 
-import { Direction, rotate, isInH2 } from "./space.js";
+import { Direction, rotate, mirror, isInH2 } from "./space.js";
 import { TouchButton } from "./common.js";
 
 export function L ({ done, options }) {
     const [name, setName] = useState(null);
     const [dir, setDir] = useState([]);
     const [touch, setTouch] = useState(false);
-    const fixDir = options.perspective == "obs" ?
-        d => d :
-        d => rotate(d);
+    let mirrored = false, fixDir = d => d;
+    if (options.perspective == "obs" && options.dominant == "left") {
+        mirrored = true;
+    } else if (options.perspective == "sign") {
+        fixDir = d => mirror(rotate(d));
+        if (options.dominant == "right") {
+            mirrored = true;
+        }
+    }
     const finish = () => {
         const mod = dir.join('')+(touch?"*":"");
         if (name == "H2") {
@@ -18,30 +24,33 @@ export function L ({ done, options }) {
             done((name||"")+mod, "M")
         }
     };
-    return <div className="grid grid-cols-[2fr,1fr,auto] grid-rows-[1fr,auto]">
-        <svg className="w-full h-full col-start-1 col-end-3 row-start-1 row-end-4"
+    return <div className={`grid ${mirrored?"grid-cols-[1fr,2fr,1fr,auto,auto]":"grid-cols-[3fr,1fr,auto,auto]"} grid-rows-[3fr,1fr,auto]`}>
+        <svg className={`w-full h-full ${mirrored?"col-start-2 col-end-6":"col-start-1 col-end-4"} row-start-1 row-end-3 -mt-2`}
             viewBox="0 0 83 87">
             <defs>
                 <filter id="svgblur">
                     <feGaussianBlur stdDeviation="0.6" />
                 </filter>
             </defs>
-            <g filter="url(#svgblur)">
-                {area_paths.map(([thisName, thisDir, path, title]) => <AreaPath
-                    key={thisName+thisDir} title={title}
-                    name={thisName} dir={fixDir(thisDir)} path={path}
-                    curName={name} curDir={dir}
-                    setName={setName} setDir={setDir}
-                />)}
+            <g style={{transformOrigin: 'center'}} transform={`scale(${mirrored?"-1":"1"},1)`}>
+                <g filter="url(#svgblur)">
+                    {area_paths.map(([thisName, thisDir, path, title]) => <AreaPath
+                        key={thisName+thisDir} title={title}
+                        name={thisName} dir={fixDir(thisDir)} path={path}
+                        curName={name} curDir={dir}
+                        setName={setName} setDir={setDir}
+                    />)}
+                </g>
+                <BodyOutline />
             </g>
-            <BodyOutline />
         </svg>
-        <div className="col-start-2 col-end-4 row-start-1">
+        <div className={mirrored?"col-start-1 col-end-3 row-start-1"
+            :"col-start-2 col-end-5 row-start-1"}>
             <Direction val={dir} set={setDir} options={options} />
         </div>
-        <TouchButton className={`col-start-3 row-start-2 mb-2 ${touch?"actual":""}`}
+        <TouchButton className={`${mirrored?"col-start-4":"col-start-3"} row-start-3 mx-2 mb-2 ${touch?"actual":""}`}
             onClick={() => setTouch(!touch)} />
-        <button className="finish col-start-3 row-start-3 mr-2 mb-2"
+        <button className={`finish ${mirrored?"col-start-5":"col-start-4"} row-start-3 mx-2 mb-2`}
             onClick={finish}>✔</button>
     </div>;
 }
