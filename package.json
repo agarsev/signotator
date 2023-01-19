@@ -1,6 +1,6 @@
 {
   "name": "signotator",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Visual input component for Sign Language transcribed using Signotation.",
   "module": "dist/bundle.js",
   "style": "style.css",

@@ -1,5 +1,7 @@
 # Signotador / Signotator
 
+* Demo: <https://agarsev.github.io/signotator/>
+
 "Signotador" es un componente React para la transcripción visual de Lengua de
 Signos Española (LSE). La introducción es paramétrica, es decir, sigue
 principios fonológicos de la LSE. Sin embargo, se realiza pinchando sobre
