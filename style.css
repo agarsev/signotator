@@ -27,6 +27,7 @@
         @apply p-0 w-12 h-12 align-middle rounded border text-gray-600 border-gray-600;
         &:not(:disabled) { @apply border-signotatorbtns-600 text-signotatorbtns-700 bg-signotatorbtns-200/50 hover:bg-signotatorbtns-300; }
         &.actual { @apply bg-signotatorbtns-300; }
+        &.wide { @apply w-20; }
         &.finish:not(:disabled) { @apply text-signotatormain-700 border-signotatormain-600 bg-signotatormain-300/50 hover:bg-signotatormain-300; }
         & svg { @apply p-0 stroke-current; }
     }

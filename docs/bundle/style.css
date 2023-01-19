@@ -766,6 +766,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(125 211 252 / var(--tw-bg-opacity));
 }
+.Signotator > div button.wide {
+  width: 5rem;
+}
 .Signotator > div button.finish:not(:disabled) {
   --tw-border-opacity: 1;
   border-color: rgb(101 163 13 / var(--tw-border-opacity));
