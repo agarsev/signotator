@@ -108,7 +108,7 @@ export function Syllab ({ done, options }) {
         let ret = [];
         if (sym) ret.push(sym);
         if (rep) ret.push(rep);
-        done(ret.length>0?ret.join(':'):'', "Q");
+        done(ret.length>0?ret.join(':')+' ':' ', "Q");
     }
     return <div><table><tbody>
         <tr>

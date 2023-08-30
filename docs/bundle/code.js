@@ -25114,7 +25114,7 @@
         ret.push(sym);
       if (rep)
         ret.push(rep);
-      done(ret.length > 0 ? ret.join(":") : "", "Q");
+      done(ret.length > 0 ? ret.join(":") + " " : " ", "Q");
     };
     return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("table", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tbody", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("tr", { children: [
@@ -25266,7 +25266,6 @@
     return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "Signotator", onClick: (e) => {
       e.preventDefault();
       e.stopPropagation();
-      inputRef.current.focus();
     }, children: [
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", { children: Object.keys(tabs).map((seg) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
         "button",

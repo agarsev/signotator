@@ -69,7 +69,7 @@ export function Signotator ({ inputRef, updateVal }) {
         }
     };
     return <div className="Signotator" onClick={e => {
-        e.preventDefault(); e.stopPropagation(); inputRef.current.focus();
+        e.preventDefault(); e.stopPropagation();
         }} >
         <nav>{Object.keys(tabs).map(seg=> <button key={seg}
                 title={tooltips[seg]}
