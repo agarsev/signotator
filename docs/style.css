@@ -1,5 +1,20 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+
+@source "../src/*.js";
+@source "./*.{html,js}";
+
+@theme {
+  --color-signotatormain-200: var(--color-lime-200);
+  --color-signotatormain-300: var(--color-lime-300);
+  --color-signotatormain-600: var(--color-lime-600);
+  --color-signotatormain-700: var(--color-lime-700);
+
+  --color-signotatorbtns-200: var(--color-sky-200);
+  --color-signotatorbtns-300: var(--color-sky-300);
+  --color-signotatorbtns-600: var(--color-sky-600);
+  --color-signotatorbtns-700: var(--color-sky-700);
+
+  --color-signotatorbg: var(--color-sky-50);
+}
 
 @import "../style.css";

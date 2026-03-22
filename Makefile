@@ -7,7 +7,7 @@ docs/bundle/code.js: docs/main.js dist/bundle.js | docs/bundle
 	npx esbuild --bundle $< --jsx=automatic --loader:.js=jsx --outfile=$@
 
 docs/bundle/style.css: docs/style.css style.css $(wildcard src/*) | docs/bundle
-	npx postcss $< -o $@
+	npx @tailwindcss/cli -i $< -o $@
 
 docs/bundle dist:
 	@mkdir -p $@
