@@ -2,7 +2,7 @@
   "name": "signotator",
   "version": "26.3.22",
   "description": "Visual input component for Sign Language transcribed using Signotation.",
-  "module": "dist/bundle.js",
+  "module": "dist/bundle.jsx",
   "style": "style.css",
   "source": "index.js",
   "type": "module",

@@ -284,9 +284,6 @@
   .mb-3 {
     margin-bottom: calc(var(--spacing) * 3);
   }
-  .block {
-    display: block;
-  }
   .flex {
     display: flex;
   }
@@ -414,9 +411,6 @@
   }
   .text-red-700 {
     color: var(--color-red-700);
-  }
-  .capitalize {
-    text-transform: capitalize;
   }
   .lowercase {
     text-transform: lowercase;
